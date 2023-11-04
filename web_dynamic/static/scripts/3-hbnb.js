@@ -1,19 +1,19 @@
 document.ready(function () {
   const amen = {};
-  $('li input[type=checkbox]').change(function () {
+  $("").change(function () {
     if (this.checked) {
       amen[this.dataset.name] = this.dataset.id;
     } else {
       delete amen[this.dataset.name];
     }
-    $('.amenities h4').text(Object.keys(amen).sort().join(', '));
+    $(".amenities h4").text(Object.keys(amen).sort().join(", "));
   });
 
-  $.getJSON('http://0.0.0.0:5001/api/v1/status/', (data) => {
-    if (data.status === 'OK') {
-      $('div#api_status').addClass('available');
+  $.getJSON("http://0.0.0.0:5001/api/v1/status/", (data) => {
+    if (data.status === "OK") {
+      $("div#api_status").addClass("available");
     } else {
-      $('div#api_status').removeClass('available');
+      $("div#api_status").removeClass("available");
     }
   });
 
@@ -32,22 +32,22 @@ document.ready(function () {
 			</div>
 			<div class="information">
 			<div class="max_guest">${place.max_guest} Guest${
-						place.max_guest !== 1 ? "s" : ""
-					}</div>
+            place.max_guest !== 1 ? "s" : ""
+          }</div>
 			<div class="number_rooms">${place.number_rooms} Bedroom${
-						place.number_rooms !== 1 ? "s" : ""
-					}</div>
+            place.number_rooms !== 1 ? "s" : ""
+          }</div>
 			<div class="number_bathrooms">${place.number_bathrooms} Bathroom${
-						place.number_bathrooms !== 1 ? "s" : ""
-					}</div>
+            place.number_bathrooms !== 1 ? "s" : ""
+          }</div>
 			</div> 
 			<div class="description">
 			${place.description}
 			</div>
 				</article>`
-				)
-			);
-		},
-		dataType: "json",
-	});
+        )
+      );
+    },
+    dataType: "json",
+  });
 });
